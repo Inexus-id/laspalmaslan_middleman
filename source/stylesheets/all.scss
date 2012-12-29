@@ -18,7 +18,18 @@ html {
 	font-size: 20px;
 }
 html, body { min-height: 100%; }
-a { text-decoration: none; }
+a { 
+	text-decoration: none;
+	color: #B40001;
+	&:hover{
+		color: #fff;
+	}
+}
+
+h2 {
+	color: #B40001;
+	border-bottom: 0.1em solid #B40001;
+}
 
 .main-header {
 	@include background-image(linear-gradient(rgb(191, 44, 41), rgb(115, 9, 18)));
