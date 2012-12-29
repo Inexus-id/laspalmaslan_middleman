@@ -1,0 +1,124 @@
+@charset "utf-8";
+
+@import "compass";
+@import "font-awesome";
+@import "susy";
+
+
+$total-columns  : 12;             // a 12-column grid
+$column-width   : 4em;            // each column is 4em wide
+$gutter-width   : 1em;            // 1em gutters between columns
+$grid-padding   : $gutter-width;  // grid-padding equal to gutters
+
+* {
+	box-sizing: border-box;
+}
+html {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 20px;
+}
+html, body { min-height: 100%; }
+a { text-decoration: none; }
+
+.main-header {
+	@include background-image(linear-gradient(rgb(191, 44, 41), rgb(115, 9, 18)));
+	text-align: center;
+	color: white;
+	@include text-shadow(#222 0 -0.1em 0.1em);
+	position: fixed;
+	width: 80%;
+	left: 20%;
+	@include single-transition(all, 0.3s, ease);
+	a {
+		display: none;
+	}
+	h1 {
+		text-indent: -100em;
+		overflow: hidden;
+		background: url(/images/logo.png) no-repeat;
+		background-position-x: 50%;
+		background-size: 6.5em;
+		margin: 0;
+		height: 2em;
+	}
+}
+
+.page-wrap {
+	float: right;
+	width: 80%;
+	left: 20%;
+	position:fixed;
+	@include single-transition(all, 0.3s, ease);
+}
+
+.main-nav {
+	position: fixed;
+	top: 0;
+	width: 20%;
+	height: 100%;
+	background: #3B3B3B;
+	overflow: hidden;
+	@include single-transition(width, 0.3s, ease);
+	a {
+		display: block;
+		@include background-image(linear-gradient(#3E3E3E, #383838));
+		border-top: 0.1em solid #484848;
+		border-bottom: 0.1em solid #2E2E2E;
+		color: white;
+		padding: 1.3em;
+		&:hover, &:focus {
+			@include background-image(linear-gradient(#484848, #383838));
+		}
+	}
+	&:after {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100%;
+		width: 10%;
+		@include background-image(linear-gradient(left, rgba(black, 0), rgba(black, 0.4)));
+	}
+}
+
+.content {
+	padding: 4em 2% 2% 2%;
+	width:96%;
+}
+
+@media only screen 
+and (orientation : portrait) { 
+	body { font-size:100%;}
+
+	.main-header a {
+		position: absolute;
+		left: 0.5em;
+		color: white;
+		font-size: 3em;
+		display:block;
+	}
+	#main-nav{
+		width: 0;
+		&.big {
+			width: 80%;
+		}
+	}
+	.page-wrap{
+		width: 100%;
+		left: 0;
+		.main-header {
+			width: 100%;
+			left: 0;
+		}
+		&.small {
+			width: 100%;
+			left: 80%;
+			.main-header {
+				width: 100%;
+				left: 80%;
+			}
+		}
+	}
+}
+
+
