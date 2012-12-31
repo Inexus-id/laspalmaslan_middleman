@@ -1,5 +1,6 @@
 #= require jquery
 #= require jquery-swipe
+#= require knockout
 window.menuEvent = () ->
 		$("html").swipe
 			swipeLeft: ->
