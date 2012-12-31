@@ -61,7 +61,37 @@ $column-width   : 4em;            // each column is 4em wide
 $gutter-width   : 0em;            // 1em gutters between columns
 $grid-padding   : 0;              // grid-padding equal to gutters
 $container-style: fluid;
-
+//++++++++++++ mixins ++++++++++++
+@mixin movile-css {
+	body {  
+		nav.main-nav {
+			@include span-columns(9,12);
+			left:-75%;
+			&.big {
+				left:0;
+			}
+		}
+		section.content {
+			@include span-columns(12,12);
+			position:fixed;
+			left:0;
+				.main-header {
+					width:100%;
+				}
+				article{
+					section {
+						@include clearfix;
+					}
+				}
+			&.small{
+				left:75%;
+			}
+		}
+	}
+	a.menu { 
+		display:block; 
+	}
+}
 //++++++++++++ style ++++++++++++
 //------------grid------------
 * {
@@ -112,7 +142,7 @@ h2 {
 .main-nav {
 	background: $main-nav-background;
 	overflow: hidden;
-	@include single-transition(width, 0.3s, ease);
+	@include single-transition(all, 0.3s, ease);
 	height: 100%;
 	position: absolute;
 	.nav-header{
@@ -123,17 +153,6 @@ h2 {
 		color: $main-nav-color;
 		@include text-shadow($nav-header-shadow-text-color 0 -0.1em 0.1em);
 		@include single-transition(all, 0.3s, ease);
-		//------------Menu link------------
-		a.menu {
-			display:none;
-			color: $main-header-color;
-			font-size: 3em;
-			position: absolute;
-			padding: 0.2em 0.2em 0 0.2em;
-			background: transparent;
-			border:0;
-			line-height:1;
-		}
 	}
 	a {
 		display: block;
@@ -169,7 +188,7 @@ h2 {
 			text-indent: -100em;
 			overflow: hidden;
 			background: url(/images/logo.png) no-repeat;
-			background-position-x: 50%;
+			background-position:50%  0%;
 			margin: 0;
 			background-size: 6.5em;
 			margin: 0;
@@ -178,7 +197,6 @@ h2 {
 	}
 	article{
 		padding: 2% 2% 5% 2%;
-		margin-top: 2em;
 		header {
 			border-bottom: 0.1em solid $h2-border-color;
 			margin-bottom: 1em;
@@ -201,71 +219,11 @@ h2 {
 /* Smartphones (portrait and landscape) ----------- */
 @media screen and (max-width: 640px){
 	body{font-size: 14px;}
-	body {  
-		nav.main-nav {
-			@include span-columns(0,12);
-			.nav-header a.menu { 
-				display:block; 
-			}
-			&.big {
-				@include span-columns(12,12);
-			}
-		}
-		section.content {
-			@include span-columns(12,12);
-			position:fixed;
-				.main-header {
-					width:100%;
-				}
-				article{
-					section {
-						@include clearfix;
-					}
-				}
-			&.small{
-				@include transparent;
-				visibility:hidden;
-			}
-		}
-	}
-	a.menu { 
-		display:block; 
-	}
-
+	@include movile-css;
 }
 //------------Movile devices------------
 @media only screen 
 and (orientation : portrait) { 
-	body {  
-		nav.main-nav {
-			@include span-columns(0,12);
-			.nav-header a.menu { 
-				display:block; 
-			}
-			&.big {
-				@include span-columns(12,12);
-			}
-		}
-		section.content {
-			@include span-columns(12,12);
-			position:fixed;
-				.main-header {
-					width:100%;
-				}
-				article{
-					section {
-						@include clearfix;
-					}
-				}
-			&.small{
-				@include transparent;
-				visibility:hidden;
-			}
-		}
-	}
-	a.menu { 
-		display:block; 
-	}
-
+	@include movile-css;
 }
 
