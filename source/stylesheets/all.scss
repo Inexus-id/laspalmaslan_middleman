@@ -1,135 +1,271 @@
 @charset "utf-8";
 
 @import "compass";
+@import "compass/reset";
 @import "font-awesome";
 @import "susy";
 
+//++++++++++++variables++++++++++++
+//------------colors------------
+$lightred: rgb(191, 44, 41);
+$midred: #B40001;
+$darkred: rgb(115, 9, 18);
+$black: #ffffff;
+$gray1: #3B3B3B;
+$gray2: #484848;
+$gray3: #222222;
+$gray4: #3E3E3E;
+$gray5: #383838;
+$gray6: #484848;
+$gray7: #2E2E2E;
+$transparent: rgba(black, 0);
+$blacktransparent: rgba(black, 0.4);
+$white: white;
+//-------------app colors-------------
+//text format
+$link-color:$darkred;
+$hover-link-color:$black;
+$h2-color:$midred;
+$h2-border-color:$midred;
+//main-header
+$main-header-color:$white;
+$main-header-shadow-text-color:$gray3;
+$main-header-gradient-background-color-start:$lightred;
+$main-header-gradient-background-color-end:$darkred;
 
+//main-nav
+	//main-nav-background
+	$main-nav-background:$gray1; 
+	$main-nav-gradient-link-color-start:$gray4;
+	$main-nav-gradient-link-color-end:$gray5;
+	//main-nav-head-background
+	$nav-header-shadow-text-color:$gray3;
+	$nav-header-gradient-background-color-start:$lightred;
+	$nav-header-gradient-background-color-end:$darkred;
+	//main-nav-borders
+	$main-nav-gradient-link-border-top-color:$gray6;
+	$main-nav-gradient-link-border-bottom-color:$gray7;
+	//main-nav-hover
+	$main-nav-hover-gradient-link-color-start:$gray2;
+	$main-nav-hover-gradient-link-color-end:$gray5;
+	//main-nav-after
+	$main-nav-after-gradient-start:$transparent;
+	$main-nav-after-gradient-end:$blacktransparent;
+	//main-nav-text
+	$main-nav-color:$white; 
+
+
+//------------grid variables------------
 $total-columns  : 12;             // a 12-column grid
 $column-width   : 4em;            // each column is 4em wide
-$gutter-width   : 1em;            // 1em gutters between columns
-$grid-padding   : $gutter-width;  // grid-padding equal to gutters
+$gutter-width   : 0em;            // 1em gutters between columns
+$grid-padding   : 0;              // grid-padding equal to gutters
+$container-style: fluid;
 
+//++++++++++++ style ++++++++++++
+//------------grid------------
 * {
 	box-sizing: border-box;
 }
-html {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 20px;
-}
-html, body { min-height: 100%; }
-a { 
-	text-decoration: none;
-	color: #B40001;
-	&:hover{
-		color: #fff;
+body {  
+	@include container;
+	nav {
+		@include span-columns(3,12);
 	}
-}
-
-h2 {
-	color: #B40001;
-	border-bottom: 0.1em solid #B40001;
-}
-
-.main-header {
-	@include background-image(linear-gradient(rgb(191, 44, 41), rgb(115, 9, 18)));
-	text-align: center;
-	color: white;
-	@include text-shadow(#222 0 -0.1em 0.1em);
-	position: fixed;
-	width: 80%;
-	left: 20%;
-	@include single-transition(all, 0.3s, ease);
-	a {
-		display: none;
-	}
-	h1 {
-		text-indent: -100em;
-		overflow: hidden;
-		background: url(/images/logo.png) no-repeat;
-		background-position-x: 50%;
-		background-size: 6.5em;
-		margin: 0;
-		height: 2em;
-	}
-}
-
-.page-wrap {
-	float: right;
-	width: 80%;
-	left: 20%;
-	position:fixed;
-	@include single-transition(all, 0.3s, ease);
-}
-
-.main-nav {
-	position: fixed;
-	top: 0;
-	width: 20%;
-	height: 100%;
-	background: #3B3B3B;
-	overflow: hidden;
-	@include single-transition(width, 0.3s, ease);
-	a {
-		display: block;
-		@include background-image(linear-gradient(#3E3E3E, #383838));
-		border-top: 0.1em solid #484848;
-		border-bottom: 0.1em solid #2E2E2E;
-		color: white;
-		padding: 1.3em;
-		&:hover, &:focus {
-			@include background-image(linear-gradient(#484848, #383838));
-		}
-	}
-	&:after {
-		content: "";
-		position: absolute;
-		top: 0;
-		right: 0;
-		height: 100%;
-		width: 10%;
-		@include background-image(linear-gradient(left, rgba(black, 0), rgba(black, 0.4)));
-	}
-}
-
-.content {
-	padding: 4em 2% 2% 2%;
-	width:100%;
-}
-
-@media only screen 
-and (orientation : portrait) { 
-	body { font-size:100%;}
-
-	.main-header a {
-		position: absolute;
-		left: 0.5em;
-		color: white;
-		font-size: 3em;
-		display:block;
-	}
-	#main-nav{
-		width: 0;
-		&.big {
-			width: 80%;
-		}
-	}
-	.page-wrap{
-		width: 100%;
-		left: 0;
-		.main-header {
-			width: 100%;
-			left: 0;
-		}
-		&.small {
-			width: 100%;
-			left: 80%;
-			.main-header {
-				width: 100%;
-				left: 80%;
+	section {
+		@include span-columns(9 omega,12);
+		article{
+			header {
+			}
+			section {
+				@include span-columns(12,12);
 			}
 		}
 	}
+	footer {
+		@include span-columns(12,12);
+	}	
 }
+//------------text------------
+html {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 20px;
+	text-align:left;
+}
+a { 
+	text-decoration: none;
+	color: $link-color;
+	&:hover{
+		color: $hover-link-color;
+	}
+}
+h1{ 
+	margin:0;
+	font-size: 2em;
+}
+h2 {
+	color: $h2-color;
+	font-size: 1.6em;
+}
+//------------Nav------------
 
+.main-nav {
+	background: $main-nav-background;
+	overflow: hidden;
+	@include single-transition(width, 0.3s, ease);
+	height: 100%;
+	position: absolute;
+	.nav-header{
+		height: 4em;
+		line-height: 4em;
+		text-align:center;
+		@include background-image(linear-gradient($nav-header-gradient-background-color-start, $nav-header-gradient-background-color-end));
+		color: $main-nav-color;
+		@include text-shadow($nav-header-shadow-text-color 0 -0.1em 0.1em);
+		@include single-transition(all, 0.3s, ease);
+		//------------Menu link------------
+		a.menu {
+			display:none;
+			color: $main-header-color;
+			font-size: 3em;
+			position: absolute;
+			padding: 0.2em 0.2em 0 0.2em;
+			background: transparent;
+			border:0;
+			line-height:1;
+		}
+	}
+	a {
+		display: block;
+		@include background-image(linear-gradient($main-nav-gradient-link-color-start, $main-nav-gradient-link-color-end));
+		border-top: 0.1em solid $main-nav-gradient-link-border-top-color;
+		border-bottom: 0.1em solid $main-nav-gradient-link-border-bottom-color;
+		color: $main-nav-color;
+		padding: 1.3em;
+		&:hover, &:focus {
+			@include background-image(linear-gradient($main-nav-hover-gradient-link-color-start, $main-nav-hover-gradient-link-color-end));
+		}
+	}
+	&:before	{
+		content: "";
+		height: 100%;
+		width: 10%;
+		position: absolute;
+		left: 90%;
+		@include background-image(linear-gradient(left, $main-nav-after-gradient-start, $main-nav-after-gradient-end));
+	}
+}
+//------------Section------------
+
+.content {
+	@include single-transition(all, 0.3s, ease);
+	.main-header {
+		height: 4em;
+		@include background-image(linear-gradient($main-header-gradient-background-color-start, $main-header-gradient-background-color-end));
+		color: $main-header-color;
+		@include text-shadow($main-header-shadow-text-color 0 -0.1em 0.1em);
+		@include single-transition(all, 0.3s, ease);
+		h1 {
+			text-indent: -100em;
+			overflow: hidden;
+			background: url(/images/logo.png) no-repeat;
+			background-position-x: 50%;
+			margin: 0;
+			background-size: 6.5em;
+			margin: 0;
+			height: 2em;
+		}
+	}
+	article{
+		padding: 2% 2% 5% 2%;
+		margin-top: 2em;
+		header {
+			border-bottom: 0.1em solid $h2-border-color;
+			margin-bottom: 1em;
+		}
+		section {
+			margin-bottom: 1em;
+		}
+		footer { 
+		}
+	}
+}
+//------------Menu link------------
+.menu {
+	display:none;
+	color: $main-header-color;
+	font-size: 3em;
+	position: absolute;
+	padding: 0.2em 0.2em 0 0.2em;
+}
+/* Smartphones (portrait and landscape) ----------- */
+@media screen and (max-width: 640px){
+	body{font-size: 14px;}
+	body {  
+		nav.main-nav {
+			@include span-columns(0,12);
+			.nav-header a.menu { 
+				display:block; 
+			}
+			&.big {
+				@include span-columns(12,12);
+			}
+		}
+		section.content {
+			@include span-columns(12,12);
+			position:fixed;
+				.main-header {
+					width:100%;
+				}
+				article{
+					section {
+						@include clearfix;
+					}
+				}
+			&.small{
+				@include transparent;
+				visibility:hidden;
+			}
+		}
+	}
+	a.menu { 
+		display:block; 
+	}
+
+}
+//------------Movile devices------------
+@media only screen 
+and (orientation : portrait) { 
+	body {  
+		nav.main-nav {
+			@include span-columns(0,12);
+			.nav-header a.menu { 
+				display:block; 
+			}
+			&.big {
+				@include span-columns(12,12);
+			}
+		}
+		section.content {
+			@include span-columns(12,12);
+			position:fixed;
+				.main-header {
+					width:100%;
+				}
+				article{
+					section {
+						@include clearfix;
+					}
+				}
+			&.small{
+				@include transparent;
+				visibility:hidden;
+			}
+		}
+	}
+	a.menu { 
+		display:block; 
+	}
+
+}
 

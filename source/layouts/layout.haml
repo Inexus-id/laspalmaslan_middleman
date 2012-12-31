@@ -6,6 +6,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="Keywords" content="las palmas lan, las palmas lan party, canarias lan party, canarias red, lan, lan party, las palmas lan party, ordenadores, video consolas, torneos, torneos canarias" >
     <meta name="Description" content="web del evento las palmas lan, con competiciones de videojuegos de ordenador y consolas." >
+    <meta name="viewport" content="width=100%; initial-scale=1; maximum-scale=1; minimum-scale=1;" />
     <!-- Use title if it's in the page YAML frontmatter -->
     <link rel="icon" type="image/png" href="/images/fav.png" />
     %title
@@ -15,6 +16,10 @@
   
   %body
     %nav.main-nav#main-nav
+      %header.nav-header
+        %a{href: "#", class: "menu", rel: "apple-touch-icon"}
+          %i.icon-reorder
+        %h1 Menu
       %a{href:"#"}
         %i.icon-align-justify
         Noticias 
@@ -31,11 +36,11 @@
         %i.icon-edit
         Inscripciones
 
-    .page-wrap
+    %section.content
       %header.main-header
         %a{href: "#", class: "menu", rel: "apple-touch-icon"}
           %i.icon-reorder
         %h1 Las Palmas Lan
 
-      .content
-        = yield
+      = yield
+    %footer
