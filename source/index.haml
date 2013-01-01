@@ -1,11 +1,13 @@
 ---
 title: Las Palmas Lan
 ---
-%article
+%article{ data: {bind: "template: { name: post, foreach: posts}"} }
+/ post template 
+%script{ id: "post", type: "text/html"}
   %header
-    %h2 Estrenamos nueva web
-  %section
-    Esta es la nueva web de Las Palmas Lan, en ella apareceran tododas las noticias con referencia al próximo evento que vamos a organizar,
-    aun estamos bajo construcción, pero estamos trabajando duro para así poder ofrecer el mejor servicio posible.
+    %h2{data: {bind: "text: title"}}
+  %section{data: {bind: "text: intro"}}
   %footer
-    publicado el 27/12/2012
+    publicado el 
+    %span{data: {bind: "text: published_at"}}
+
