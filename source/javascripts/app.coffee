@@ -3,7 +3,7 @@
 #= require knockout.navigation
 
 
-$ ->
+jQuery ($) ->
 	# Define application namespace
 	App = window.App = {}
 
@@ -14,22 +14,27 @@ $ ->
 	App.News = ->
 		@bookmarkable = true
 		@title = ko.observable("Las Palmas Lan 2013 | Noticias")
+		@
 
 	App.Calendar = ->
 		@bookmarkable = true
 		@title = ko.observable("Las Palmas Lan 2013 | Calendario")
+		@
 
 	App.Tournaments = ->
 		@bookmarkable = true
 		@title = ko.observable("Las Palmas Lan 2013 | Torneos")
+		@
 
 	App.Disclaimer = ->
 		@bookmarkable = true
 		@title = ko.observable("Las Palmas Lan 2013 | Aviso Legal")
+		@
 
 	App.Inscriptions = ->
 		@bookmarkable = true
 		@title = ko.observable("Las Palmas Lan 2013 | Inscripciones")
+		@
 
 
 	# We will do ko.applyBindings on the ShellModel
@@ -62,5 +67,6 @@ $ ->
 
 		@GoToInscriptions = ->
 			self.navigation.navigateTo new App.Inscriptions()
+		@
 
 	ko.applyBindings new App.ShellModel()

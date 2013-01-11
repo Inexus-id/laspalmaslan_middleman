@@ -11,7 +11,7 @@ window.menuEvent = () ->
 		$("#main-nav").addClass "big"
 		$(".content").addClass "small"
 
-$ ->
+jQuery ($) ->
 	$('.menu').click () ->
 		$("#main-nav").toggleClass "big"
 		$(".content").toggleClass "small"
