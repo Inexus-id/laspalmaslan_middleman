@@ -21,6 +21,8 @@ $gray7: #2E2E2E;
 $transparent: rgba(black, 0);
 $blacktransparent: rgba(black, 0.4);
 $white: white;
+$shadow-black: rgba(0, 0, 0, 0.1);
+$shadow-black-darker: rgba(0, 0, 0, 0.25);
 //-------------app colors-------------
 //text format
 $link-color:$darkred;
@@ -32,6 +34,9 @@ $main-header-color:$white;
 $main-header-shadow-text-color:$gray3;
 $main-header-gradient-background-color-start:$lightred;
 $main-header-gradient-background-color-end:$darkred;
+  //button colors
+	$button-general-border-color:$shadow-black-darker;
+	$button-bottom-border-color:$shadow-black;
 
 //main-nav
 	//main-nav-background
@@ -212,9 +217,21 @@ h2 {
 .menu {
 	display:none;
 	color: $main-header-color;
-	font-size: 3em;
+	font-size: 2.5em;
 	position: absolute;
 	padding: 0.2em 0.2em 0 0.2em;
+	@include background-image(linear-gradient($main-header-gradient-background-color-start, $main-header-gradient-background-color-end));
+	border-color: $button-general-border-color;
+	border-bottom-color:$button-bottom-border-color;
+	border-style: solid;
+	border-width: 0.03em;
+	@include border-radius(0.3em);
+	@include box-shadow(inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.075));
+	margin: 0.15em;
+	background-repeat: repeat-x;
+	&:active {
+		background-color:$main-header-gradient-background-color-start;
+	}
 }
 /* Smartphones (portrait and landscape) ----------- */
 @media screen and (max-width: 640px){

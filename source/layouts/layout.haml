@@ -12,24 +12,25 @@
     %title
       = data.page.title
     = stylesheet_link_tag "normalize", "all"
+    = javascript_include_tag  "all"
   
   %body
     %nav.main-nav#main-nav
       %header.nav-header
         %h1 Menu
-      %a{href:"#"}
+      %a{href:"#", data: {bind: "click: GoToNews "}}
         %i.icon-align-justify
         Noticias 
-      %a{href:"#"}
+      %a{href:"#", data: {bind: "click: GoToCalendar"}}
         %i.icon-calendar
         Programa
-      %a{href:"#"}
+      %a{href:"#", data: {bind: "click: GoToTournaments"}}
         %i.icon-trophy
         Torneos
-      %a{href:"#"}
+      %a{href:"#", data: {bind: "click: GoToDisclaimer"}}
         %i.icon-legal
         Aviso legal
-      %a{href:"#"}
+      %a{href:"#", data: {bind: "click: GoToInscriptions"}}
         %i.icon-edit
         Inscripciones
 
@@ -38,7 +39,8 @@
         %a{href: "#", class: "menu", rel: "apple-touch-icon"}
           %i.icon-reorder
         %h1 Las Palmas Lan
+      %article{ data: {bind: "navigation: navigation"}}
 
       = yield
     %footer
-    = javascript_include_tag  "all"
+    = javascript_include_tag  "app"
