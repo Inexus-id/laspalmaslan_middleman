@@ -1,5 +1,8 @@
 #= require jquery
 #= require jquery-swipe
+#= require history
+#= require knockout
+#= require knockout.navigation
 
 window.menuEvent = () ->
 	$("html").swipe

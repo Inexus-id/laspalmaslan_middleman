@@ -1,6 +1,3 @@
-#= require history
-#= require knockout
-#= require knockout.navigation
 
 
 $ ->

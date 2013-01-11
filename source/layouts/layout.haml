@@ -43,4 +43,70 @@
 
       = yield
     %footer
-    = javascript_include_tag  "app"
+:javascript
+   // Define application namespace
+  var App = window.App = {};
+
+  // Let ko.navigation know where to look
+  ko.navigation.setNamespace(App);
+
+  // Define view model constructors
+  App.News = function() {
+    this.bookmarkable = true;
+    this.title = ko.observable("Las Palmas Lan 2013 | Noticias");
+  };
+
+  App.Calendar = function() {
+    this.bookmarkable = true;
+    this.title = ko.observable("Las Palmas Lan 2013 | Calendario");
+  };
+
+  App.Tournaments = function() {
+    this.bookmarkable = true;
+    this.title = ko.observable("Las Palmas Lan 2013 | Torneos");
+  };
+
+  App.Disclaimer = function() {
+    this.bookmarkable = true;
+    this.title = ko.observable("Las Palmas Lan 2013 | Aviso Legal");
+  };
+
+  App.Inscriptions = function() {
+    this.bookmarkable = true;
+    this.title = ko.observable("Las Palmas Lan 2013 | Inscripciones");
+  };
+
+  // We will do ko.applyBindings on the ShellModel
+  App.ShellModel = function() {
+      var self = this;
+
+      // Store a reference in App.navigation for easy access from other view models
+      this.navigation = App.navigation = new ko.navigation.ShellNavigationModel({
+          // The vm to initialize with, either an instance or factory/accessor function
+          defaultViewModel: new App.News(),
+          expiredViewModel: { viewName: "not-found" },
+          maxStackSize: 5 // Expire items after a certain point to cap memory usage
+      });
+      // View model navigation
+      this.GoToNews = function() {
+          self.navigation.navigateTo(new App.News());
+      };
+
+      this.GoToCalendar = function() {
+          self.navigation.navigateTo(new App.Calendar());
+      };
+
+      this.GoToTournaments = function() {
+          self.navigation.navigateTo(new App.Tournaments());
+      };
+
+      this.GoToDisclaimer = function() {
+          self.navigation.navigateTo(new App.Disclaimer());
+      };
+
+      this.GoToInscriptions = function() {
+          self.navigation.navigateTo(new App.Inscriptions());
+      };
+  };
+
+  ko.applyBindings(new App.ShellModel());
