@@ -1,5 +1,11 @@
 #= require jquery
+#= require jquery.nanoscroller.min
 #= require jquery-swipe
+#= require history
+#= require knockout
+#= require knockout.navigation
+#= require app
+
 
 window.menuEvent = () ->
 	$("html").swipe

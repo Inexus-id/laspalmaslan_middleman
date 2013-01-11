@@ -1,7 +1,3 @@
-#= require history
-#= require knockout
-#= require knockout.navigation
-
 
 jQuery ($) ->
 	# Define application namespace

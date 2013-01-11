@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+@import "nanoscroller";
 @import "compass";
 @import "compass/reset";
 @import "font-awesome";
@@ -84,6 +85,10 @@ $container-style: fluid;
 					width:100%;
 				}
 				article{
+					&.scroll{
+						height: 84%;
+						overflow:auto;
+					}
 					section {
 						@include clearfix;
 					}
@@ -126,6 +131,10 @@ html {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 20px;
 	text-align:left;
+	overflow: hidden;
+}
+html, body {
+ height: 100%;
 }
 a { 
 	text-decoration: none;
@@ -183,6 +192,7 @@ h2 {
 
 .content {
 	@include single-transition(all, 0.3s, ease);
+	height: 100%;
 	.main-header {
 		height: 4em;
 		@include background-image(linear-gradient($main-header-gradient-background-color-start, $main-header-gradient-background-color-end));
@@ -202,6 +212,10 @@ h2 {
 	}
 	article{
 		padding: 2% 2% 5% 2%;
+		&.scroll{
+			height: 90%;
+			overflow:auto;
+		}
 		header {
 			border-bottom: 0.1em solid $h2-border-color;
 			margin-bottom: 1em;

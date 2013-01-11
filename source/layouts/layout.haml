@@ -39,8 +39,7 @@
         %a{href: "#", class: "menu", rel: "apple-touch-icon"}
           %i.icon-reorder
         %h1 Las Palmas Lan
-      %article{ data: {bind: "navigation: navigation"}}
+      %article.scroll{ data: {bind: "navigation: navigation"}}
 
       = yield
     %footer
-    = javascript_include_tag  "app"
