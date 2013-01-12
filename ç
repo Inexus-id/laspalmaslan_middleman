@@ -1,0 +1,83 @@
+!!!5
+%html
+  %head
+    <meta charset="utf-8">
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="Keywords" content="las palmas lan, las palmas lan party, canarias lan party, canarias red, lan, lan party, las palmas lan party, ordenadores, video consolas, torneos, torneos canarias" >
+    <meta name="Description" content="web del evento las palmas lan, con competiciones de videojuegos de ordenador y consolas." >
+    <meta name="viewport" content="width=100%; initial-scale=1; maximum-scale=1; minimum-scale=1;" />
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <link rel="icon" type="image/png" href="/images/fav.png" />
+    %title
+      = data.page.title
+    = stylesheet_link_tag "normalize", "all"
+    = javascript_include_tag  "all"
+  
+  %body
+    %nav.main-nav#main-nav
+      %header.nav-header
+        %h1 Menu
+      %a{href:"#", data: {bind: "currentPage = 'noticias'"}}
+        %i.icon-align-justify
+        Noticias 
+      %a{href:"#", data: {bind: "currentPage = 'noticias'"}}
+        %i.icon-calendar
+        Programa
+      %a{href:"#", data: {bind: "currentPage = 'noticias'"}}
+        %i.icon-trophy
+        Torneos
+      %a{href:"#", data: {bind: "currentPage = 'noticias'"}}
+        %i.icon-legal
+        Aviso legal
+      %a{href:"#", data: {bind: "currentPage = 'noticias'"}}
+        %i.icon-edit
+        Inscripciones
+
+    %section.content
+      %header.main-header
+        %a{href: "#", class: "menu", rel: "apple-touch-icon"}
+          %i.icon-reorder
+        %h1 Las Palmas Lan
+
+      %select{data: {bind: "options: pageNames, value: currentPage"}}
+      .app_form{ data: {bind: "template: {'name':currentPage()}"}}
+      %script#noticias{:type => "text/html"}
+        %h2 
+          Noticias
+      %script#programa{:type => "text/html"}
+        %h2 
+          Programa
+      %script#torneos{:type => "text/html"}
+        %h2 
+          Torneos
+      %script#aviso_legal{:type => "text/html"}
+        %h2 
+          Aviso legal
+      %script#inscripciones{:type => "text/html"}
+        %h2 
+          Inscripciones
+      = yield
+    %footer
+%script{ type: "text/html", id: "posts"}
+  %article
+    %header
+      %h2{data: {bind: "text: title"}}
+    %section{data: {bind: "text: intro"}}
+    %footer
+      publicado el 
+      %span{data: {bind: "text: published_at"}}
+:javascript
+  function LasPalmasLanViewModel()
+  {
+    var self=this;
+      self.currentPage= ko.observable('noticias');
+
+        self.pageNames = ko.observableArray(['noticias', 'programa', 'torneos','aviso_legal', 'inscripciones']);
+          }
+
+            var myview=new LasPalmasLanViewModel();
+              ko.applyBindings(myview);
+  
+
+
