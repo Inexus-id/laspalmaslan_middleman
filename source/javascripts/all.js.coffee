@@ -23,3 +23,4 @@ jQuery ($) ->
 		$(".content").toggleClass "small"
 	if window.innerHeight > window.innerWidth
 		menuEvent()
+	$(".nano").nanoScroller({ contentClass: 'content_scroll' })
